@@ -1,0 +1,27 @@
+{
+  "name": "piou-piou/ribs-blog-bundle",
+  "license": "MIT",
+  "type": "symfony-bundle",
+  "description": "RibsBlogBundle is a bunlde to manage articles of your blog. It's a module of RibsAdminBundle",
+  "homepage": "https://github.com/Piou-piou/RibsBlogBundle",
+  "authors": [
+    {
+      "name": "Anthony Pilloud",
+      "email": "pilloud.anthony@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "piou-piou/ribs-admin-bundle": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "PiouPiou\\RibsBlogBundle\\": ""
+    }
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": "true"
+    }
+  }
+}
