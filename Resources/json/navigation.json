@@ -1,0 +1,11 @@
+{
+  "test": "test",
+  "items": [
+    {
+      "right": "ribsadmin@blog",
+      "url": "ribsadmin_blog_index",
+      "icon": "",
+      "text": "Ribs Blog"
+    }
+  ]
+}
