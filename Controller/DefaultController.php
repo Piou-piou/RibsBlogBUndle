@@ -22,4 +22,14 @@ class DefaultController extends Controller
 		
 		return $this->render("@RibsBlog/admin/index.html.twig", ["articles" => $articles]);
 	}
+	
+	/**
+	 * @Route("/create/", name="ribsadmin_blog_create")
+	 * @Route("/edit/", name="ribsadmin_blog_edit")
+	 * @return Response
+	 */
+	public function editAction(): Response
+	{
+		return $this->render("@RibsBlog/admin/edit.html.twig");
+	}
 }

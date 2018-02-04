@@ -7,12 +7,12 @@
     },
     {
       "right": "ribsadmin@blog@create",
-      "url": "ribsadmin_blog_index",
+      "url": "ribsadmin_blog_create",
       "text": "Create a blog"
     },
     {
       "right": "ribsadmin@blog@edit",
-      "url": "ribsadmin_blog_index",
+      "url": "ribsadmin_blog_edit",
       "text": "Edit a blog"
     },
     {
