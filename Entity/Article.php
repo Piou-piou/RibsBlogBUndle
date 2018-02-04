@@ -63,7 +63,7 @@ class Article
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="ribsmoduleBlogArticle")
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="blogArticle")
      */
     private $blogCategory;
 	
