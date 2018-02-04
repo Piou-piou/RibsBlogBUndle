@@ -5,7 +5,7 @@ namespace PiouPiou\RibsBlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * RibsmoduleBlogCategory
+ * Category
  *
  * @ORM\Table(name="ribsmodule_blog_category")
  * @ORM\Entity
@@ -38,7 +38,7 @@ class Category
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="RibsmoduleBlogArticle", inversedBy="ribsmoduleBlogCategory")
+     * @ORM\ManyToMany(targetEntity="Article", inversedBy="blogCategory")
      * @ORM\JoinTable(name="ribsmodule_blog_category_has_ribsmodule_blog_article",
      *   joinColumns={
      *     @ORM\JoinColumn(name="ribsmodule_blog_category_id", referencedColumnName="id")
@@ -48,14 +48,77 @@ class Category
      *   }
      * )
      */
-    private $ribsmoduleBlogArticle;
+    private $blogArticle;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->ribsmoduleBlogArticle = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->blogArticle = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+	
+	/**
+	 * @return int
+	 */
+	public function getId(): int
+	{
+		return $this->id;
+	}
+	
+	/**
+	 * @param int $id
+	 */
+	public function setId(int $id)
+	{
+		$this->id = $id;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getCategory(): string
+	{
+		return $this->category;
+	}
+	
+	/**
+	 * @param string $category
+	 */
+	public function setCategory(string $category)
+	{
+		$this->category = $category;
+	}
+	
+	/**
+	 * @return null|string
+	 */
+	public function getUrl()
+	{
+		return $this->url;
+	}
+	
+	/**
+	 * @param null|string $url
+	 */
+	public function setUrl($url)
+	{
+		$this->url = $url;
+	}
+	
+	/**
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getBlogArticle(): \Doctrine\Common\Collections\Collection
+	{
+		return $this->blogArticle;
+	}
+	
+	/**
+	 * @param \Doctrine\Common\Collections\Collection $blogArticle
+	 */
+	public function setBlogArticle(\Doctrine\Common\Collections\Collection $blogArticle)
+	{
+		$this->blogArticle = $blogArticle;
+	}
 }
