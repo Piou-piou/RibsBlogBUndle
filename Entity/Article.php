@@ -3,6 +3,7 @@
 namespace PiouPiou\RibsBlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Article
@@ -65,6 +66,22 @@ class Article
      * @ORM\ManyToMany(targetEntity="Category", mappedBy="ribsmoduleBlogArticle")
      */
     private $blogCategory;
+	
+	/**
+	 * @var \DateTime
+	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @ORM\Column(name="creation_date", type="date", nullable=true)
+	 */
+	private $creationDate;
+	
+	/**
+	 * @var \DateTime
+	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @ORM\Column(name="update_date", type="date", nullable=true)
+	 */
+	private $updateDate;
 
     /**
      * Constructor
@@ -184,5 +201,37 @@ class Article
 	public function setBlogCategory(\Doctrine\Common\Collections\Collection $blogCategory)
 	{
 		$this->blogCategory = $blogCategory;
+	}
+	
+	/**
+	 * @return \DateTime
+	 */
+	public function getCreationDate(): \DateTime
+	{
+		return $this->creationDate;
+	}
+	
+	/**
+	 * @param \DateTime $creationDate
+	 */
+	public function setCreationDate(\DateTime $creationDate)
+	{
+		$this->creationDate = $creationDate;
+	}
+	
+	/**
+	 * @return \DateTime
+	 */
+	public function getUpdateDate(): \DateTime
+	{
+		return $this->updateDate;
+	}
+	
+	/**
+	 * @param \DateTime $updateDate
+	 */
+	public function setUpdateDate(\DateTime $updateDate)
+	{
+		$this->updateDate = $updateDate;
 	}
 }
