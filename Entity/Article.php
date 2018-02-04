@@ -5,7 +5,7 @@ namespace PiouPiou\RibsBlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * RibsmoduleBlogArticle
+ * Article
  *
  * @ORM\Table(name="ribsmodule_blog_article", indexes={@ORM\Index(name="fk_ribsmodule_blog_article_ribsmodule_blog_state1_idx", columns={"ribsmodule_blog_state_id"})})
  * @ORM\Entity
@@ -50,28 +50,139 @@ class Article
     private $publicationDate;
 
     /**
-     * @var \RibsmoduleBlogState
+     * @var \state
      *
-     * @ORM\ManyToOne(targetEntity="RibsmoduleBlogState")
+     * @ORM\ManyToOne(targetEntity="State")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ribsmodule_blog_state_id", referencedColumnName="id")
      * })
      */
-    private $ribsmoduleBlogState;
+    private $state;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="RibsmoduleBlogCategory", mappedBy="ribsmoduleBlogArticle")
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="ribsmoduleBlogArticle")
      */
-    private $ribsmoduleBlogCategory;
+    private $blogCategory;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->ribsmoduleBlogCategory = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->blogCategory = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+	
+	/**
+	 * @return int
+	 */
+	public function getId(): int
+	{
+		return $this->id;
+	}
+	
+	/**
+	 * @param int $id
+	 */
+	public function setId(int $id)
+	{
+		$this->id = $id;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getTitle(): string
+	{
+		return $this->title;
+	}
+	
+	/**
+	 * @param string $title
+	 */
+	public function setTitle(string $title)
+	{
+		$this->title = $title;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getArticle(): string
+	{
+		return $this->article;
+	}
+	
+	/**
+	 * @param string $article
+	 */
+	public function setArticle(string $article)
+	{
+		$this->article = $article;
+	}
+	
+	/**
+	 * @return null|string
+	 */
+	public function getUrl()
+	{
+		return $this->url;
+	}
+	
+	/**
+	 * @param null|string $url
+	 */
+	public function setUrl($url)
+	{
+		$this->url = $url;
+	}
+	
+	/**
+	 * @return \DateTime|null
+	 */
+	public function getPublicationDate()
+	{
+		return $this->publicationDate;
+	}
+	
+	/**
+	 * @param \DateTime|null $publicationDate
+	 */
+	public function setPublicationDate($publicationDate)
+	{
+		$this->publicationDate = $publicationDate;
+	}
+	
+	/**
+	 * @return \state
+	 */
+	public function getState(): \state
+	{
+		return $this->state;
+	}
+	
+	/**
+	 * @param \state $state
+	 */
+	public function setState(\state $state)
+	{
+		$this->state = $state;
+	}
+	
+	/**
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getBlogCategory(): \Doctrine\Common\Collections\Collection
+	{
+		return $this->blogCategory;
+	}
+	
+	/**
+	 * @param \Doctrine\Common\Collections\Collection $blogCategory
+	 */
+	public function setBlogCategory(\Doctrine\Common\Collections\Collection $blogCategory)
+	{
+		$this->blogCategory = $blogCategory;
+	}
 }
