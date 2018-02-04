@@ -5,7 +5,33 @@
 {% endblock %}
 
 {% block body %}
-	<div class="content-block">
+	{% if ribsadmin_acces_right.testRight("ribsadmin@blog@create") == true %}
+		<div class="top-buttons">
+			<a href="{{ path('ribsadmin_access_rights_create') }}">Create a new list</a>
+		</div>
+	{% endif %}
 	
+	<div class="multiple-blocks">
+		{% for i in articles %}
+			<div class="block">
+				<img src="{{ asset('bundles/ribsadmin/images/block-background.png') }}" alt="background of the block">
+				<h2>{{ i.title }}</h2>
+				
+				<div class="content">
+					<p>{{ i.article|striptags|slice(0, 150) }}</p>
+					<p>Published on ! {{ i.publicationDate|date("d/m/Y H:i:s") }}</p>
+				</div>
+				
+				{% if ribsadmin_acces_right.testRight("ribsadmin@blog@edit") == true %}
+					<a href="#" class="edit">Edit</a>
+				{% endif %}
+				
+				{% if ribsadmin_acces_right.testRight("ribsadmin@blog@delete") == true %}
+					<a class="delete" data-fancybox data-href="#" data-src="#info-popup" data-message="Are you sure
+					you want to delete this list ?"
+					   href="javascripts:;">Delete</a>
+				{% endif %}
+			</div>
+		{% endfor %}
 	</div>
 {% endblock %}

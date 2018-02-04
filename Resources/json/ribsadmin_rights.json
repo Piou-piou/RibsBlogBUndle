@@ -4,6 +4,21 @@
       "right": "ribsadmin@blog",
       "url": "ribsadmin_blog_index",
       "text": "Index page of Ribs"
+    },
+    {
+      "right": "ribsadmin@blog@create",
+      "url": "ribsadmin_blog_index",
+      "text": "Create a blog"
+    },
+    {
+      "right": "ribsadmin@blog@edit",
+      "url": "ribsadmin_blog_index",
+      "text": "Edit a blog"
+    },
+    {
+      "right": "ribsadmin@blog@delete",
+      "url": "ribsadmin_blog_index",
+      "text": "Delete a blog"
     }
   ]
 }
