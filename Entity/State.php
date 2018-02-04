@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class State
 {
+	const   PUBLISHED = 1,
+			DRAFT = 2,
+			ARCHIVED  = 3;
+	
     /**
      * @var int
      *
