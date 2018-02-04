@@ -21,7 +21,21 @@ class Article
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
+	
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="title_tag", type="string", length=150, nullable=false)
+	 */
+	private $titleTag;
+	
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="description_tag", type="string", length=150, nullable=false)
+	 */
+	private $descriptionTag;
+	
     /**
      * @var string
      *
@@ -105,6 +119,38 @@ class Article
 	public function setId(int $id)
 	{
 		$this->id = $id;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getTitleTag(): string
+	{
+		return $this->titleTag;
+	}
+	
+	/**
+	 * @param string $titleTag
+	 */
+	public function setTitleTag(string $titleTag)
+	{
+		$this->titleTag = $titleTag;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getDescriptionTag(): string
+	{
+		return $this->descriptionTag;
+	}
+	
+	/**
+	 * @param string $descriptionTag
+	 */
+	public function setDescriptionTag(string $descriptionTag)
+	{
+		$this->descriptionTag = $descriptionTag;
 	}
 	
 	/**
