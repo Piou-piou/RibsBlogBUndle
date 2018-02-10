@@ -46,6 +46,14 @@ class EditArticle extends AbstractType
 				'attr' => [],
 				'required' => true
 			])
+			->add('publicationDate', TextType::class, [
+				'label' => 'Publication date of the article',
+				'label_attr' => [
+					'class' => 'label'
+				],
+				'attr' => [],
+				'required' => true
+			])
 			->add('submit', SubmitType::class, [
 				'label' => 'Validate',
 				'attr' => []
