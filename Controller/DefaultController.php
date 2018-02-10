@@ -4,6 +4,7 @@ namespace PiouPiou\RibsBlogBundle\Controller;
 
 use PiouPiou\RibsBlogBundle\Entity\Article;
 use PiouPiou\RibsBlogBundle\Entity\State;
+use PiouPiou\RibsBlogBundle\Form\EditArticle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,11 +26,16 @@ class DefaultController extends Controller
 	
 	/**
 	 * @Route("/create/", name="ribsadmin_blog_create")
-	 * @Route("/edit/", name="ribsadmin_blog_edit")
+	 * @Route("/edit/{url_article}", name="ribsadmin_blog_edit")
+	 * @param string|null $url_article
 	 * @return Response
 	 */
-	public function editAction(): Response
+	public function editAction(string $url_article = null): Response
 	{
-		return $this->render("@RibsBlog/admin/edit.html.twig");
+		$form = $this->createForm(EditArticle::class);
+		
+		return $this->render("@RibsBlog/admin/edit.html.twig", [
+			"form" => $form->createView()
+		]);
 	}
 }

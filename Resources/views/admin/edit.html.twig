@@ -5,20 +5,33 @@
 {% endblock %}
 
 {% block body %}
-	<form action="">
-		<div class="content-block">
-			<h2>SEO informations</h2>
-			
-			<div class="block mid-width">
-				<label for="" class="label">Test</label>
-				<input type="text">
-			</div>
-			
-			<div class="block mid-width">
-				<label for="" class="label">Test</label>
-				<input type="text">
-			</div>
+	{{ form_start(form) }}
+	<div class="content-block">
+		<h2>SEO informations</h2>
+		
+		<div class="block mid-width">
+			{{ form_label(form.titleTag) }}
+			{{ form_widget(form.titleTag) }}
 		</div>
-	</form>
-
+		
+		<div class="block mid-width">
+			{{ form_label(form.url) }}
+			{{ form_widget(form.url) }}
+		</div>
+		
+		<div class="block no-input">
+			{{ form_label(form.descriptionTag) }}
+			{{ form_widget(form.descriptionTag) }}
+		</div>
+	</div>
+	
+	<div class="content-block">
+		<h2>Article informations</h2>
+		
+		<div class="block mid-width">
+			{{ form_label(form.title) }}
+			{{ form_widget(form.title) }}
+		</div>
+	</div>
+	{{ form_end(form) }}
 {% endblock %}

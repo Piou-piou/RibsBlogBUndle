@@ -1,9 +1,10 @@
 <?php
 
-namespace PiouPiou\RibsAdminBundle\Form;
+namespace PiouPiou\RibsBlogBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,10 +22,10 @@ class EditArticle extends AbstractType
 				'attr' => [],
 				'required' => true
 			])
-			->add('descriptionTag', TextType::class, [
+			->add('descriptionTag', TextareaType::class, [
 				'label' => 'Description tag of the page',
 				'label_attr' => [
-					'class' => 'label'
+					'class' => 'label label-textarea'
 				],
 				'attr' => [],
 				'required' => true
@@ -54,7 +55,7 @@ class EditArticle extends AbstractType
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults([
-			'data_class' => \PiouPiou\RibsAdminBundle\Entity\AccessRight::class,
+			'data_class' => \PiouPiou\RibsBlogBundle\Entity\Article::class,
 		]);
 	}
 }
