@@ -27,18 +27,20 @@ class DefaultController extends Controller
 	
 	/**
 	 * @Route("/create/", name="ribsadmin_blog_create")
-	 * @Route("/edit/{url_article}", name="ribsadmin_blog_edit")
-	 * @param string|null $url_article
+	 * @Route("/edit/{url}", name="ribsadmin_blog_edit")
+	 * @param string|null $url
 	 * @return Response
 	 */
-	public function editAction(Request $request, string $url_article = null): Response
+	public function editAction(Request $request, string $url = null): Response
 	{
 		$em = $this->getDoctrine()->getManager();
 		
-		if ($url_article === null) {
+		if ($url === null) {
 			$article = new Article();
+			$edit = false;
 		} else {
-			$article = new Article();
+			$article = $em->getRepository(Article::class)->findOneBy(["url" => $url]);
+			$edit = true;
 		}
 		
 		$form = $this->createForm(EditArticle::class, $article);
@@ -49,7 +51,12 @@ class DefaultController extends Controller
 			$em->persist($form->getData());
 			$em->flush();
 			
-			$this->addFlash("success-flash", "Your article was correctly created");
+			if ($edit === true) {
+				$this->addFlash("success-flash", "Your article was correctly edited");
+			} else {
+				$this->addFlash("success-flash", "Your article was correctly created");
+			}
+			
 			return $this->redirectToRoute('ribsadmin_blog_index');
 		}
 		

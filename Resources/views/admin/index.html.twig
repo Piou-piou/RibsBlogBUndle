@@ -23,7 +23,7 @@
 				</div>
 				
 				{% if ribsadmin_acces_right.testRight("ribsadmin@blog@edit") == true %}
-					<a href="#" class="edit">Edit</a>
+					<a href="{{ path('ribsadmin_blog_edit', {"url": i.url}) }}" class="edit">Edit</a>
 				{% endif %}
 				
 				{% if ribsadmin_acces_right.testRight("ribsadmin@blog@delete") == true %}
