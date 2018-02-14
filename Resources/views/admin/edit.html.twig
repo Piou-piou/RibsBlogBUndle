@@ -43,5 +43,14 @@
 			{{ form_widget(form.publicationDate) }}
 		</div>
 	</div>
+	
+	<div class="content-block">
+		<h2>Content of the article</h2>
+		
+		<div class="block no-input">
+			{{ form_label(form.article) }}
+			{{ form_widget(form.article) }}
+		</div>
+	</div>
 	{{ form_end(form) }}
 {% endblock %}

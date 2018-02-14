@@ -54,6 +54,14 @@ class EditArticle extends AbstractType
 				'attr' => [],
 				'required' => true
 			])
+			->add('article', TextareaType::class, [
+				'label' => 'Article',
+				'label_attr' => [
+					'class' => 'label label-textarea'
+				],
+				'attr' => [],
+				'required' => true
+			])
 			->add('submit', SubmitType::class, [
 				'label' => 'Validate',
 				'attr' => []
