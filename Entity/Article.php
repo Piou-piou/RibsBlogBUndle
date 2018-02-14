@@ -124,7 +124,7 @@ class Article
 	/**
 	 * @return string
 	 */
-	public function getTitleTag(): string
+	public function getTitleTag(): ?string
 	{
 		return $this->titleTag;
 	}
@@ -140,7 +140,7 @@ class Article
 	/**
 	 * @return string
 	 */
-	public function getDescriptionTag(): string
+	public function getDescriptionTag(): ?string
 	{
 		return $this->descriptionTag;
 	}
@@ -156,7 +156,7 @@ class Article
 	/**
 	 * @return string
 	 */
-	public function getTitle(): string
+	public function getTitle(): ?string
 	{
 		return $this->title;
 	}
@@ -172,7 +172,7 @@ class Article
 	/**
 	 * @return string
 	 */
-	public function getArticle(): string
+	public function getArticle(): ?string
 	{
 		return $this->article;
 	}

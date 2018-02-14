@@ -3,6 +3,7 @@
 namespace PiouPiou\RibsBlogBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -46,12 +47,15 @@ class EditArticle extends AbstractType
 				'attr' => [],
 				'required' => true
 			])
-			->add('publicationDate', TextType::class, [
+			->add('publicationDate', DateType::class, [
 				'label' => 'Publication date of the article',
 				'label_attr' => [
 					'class' => 'label'
 				],
 				'attr' => [],
+				'widget' => 'single_text',
+				'format' => 'dd/MM/yyyy',
+				'html5' => false,
 				'required' => true
 			])
 			->add('article', TextareaType::class, [
