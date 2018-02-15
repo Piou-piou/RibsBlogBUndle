@@ -8,11 +8,15 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Article
  *
- * @ORM\Table(name="ribsmodule_blog_article", indexes={@ORM\Index(name="fk_ribsmodule_blog_article_ribsmodule_blog_state1_idx", columns={"ribsmodule_blog_state_id"})})
+ * @ORM\Table(name="ribsmodule_blog_article")
  * @ORM\Entity
  */
 class Article
 {
+	const PUBLISHED = 1,
+		DRAFT = 2,
+		ARCHIVED  = 3;
+	
     /**
      * @var int
      *
@@ -65,12 +69,9 @@ class Article
     private $publicationDate;
 
     /**
-     * @var \state
+     * @var int
      *
-     * @ORM\ManyToOne(targetEntity="State")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ribsmodule_blog_state_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="state", type="integer", nullable=false)
      */
     private $state;
 
@@ -218,17 +219,17 @@ class Article
 	}
 	
 	/**
-	 * @return \state
+	 * @return int
 	 */
-	public function getState(): \state
+	public function getState(): int
 	{
 		return $this->state;
 	}
 	
 	/**
-	 * @param \state $state
+	 * @param int $state
 	 */
-	public function setState(\state $state)
+	public function setState(int $state)
 	{
 		$this->state = $state;
 	}
