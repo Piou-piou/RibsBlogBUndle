@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block body %}
+	{% include "@RibsBlog/admin/navigation.html" with {'navigation': navigation} %}
+	
 	{% if ribsadmin_acces_right.testRight("ribsadmin@blog@create") == true %}
 		<div class="top-buttons">
 			<a href="{{ path('ribsadmin_blog_create') }}">Create an article</a>

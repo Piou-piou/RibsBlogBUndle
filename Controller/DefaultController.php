@@ -22,7 +22,10 @@ class DefaultController extends Controller
 			"state" => Article::PUBLISHED,
 		]);
 		
-		return $this->render("@RibsBlog/admin/index.html.twig", ["articles" => $articles]);
+		return $this->render("@RibsBlog/admin/index.html.twig", [
+			"articles" => $articles,
+			"navigation" => $this->getNavigation(),
+		]);
 	}
 	
 	/**
@@ -62,6 +65,20 @@ class DefaultController extends Controller
 		
 		return $this->render("@RibsBlog/admin/edit.html.twig", [
 			"form" => $form->createView(),
+			"navigation" => $this->getNavigation(),
 		]);
+	}
+	
+	/**
+	 * @return array
+	 * method return top nav for the blog
+	 */
+	private function getNavigation(): array
+	{
+		return [
+			["state" => "PUBLISHED",],
+			["state" => "DRAFT",],
+			["state" => "ARCHIVED",],
+		];
 	}
 }
