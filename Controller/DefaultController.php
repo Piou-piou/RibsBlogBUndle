@@ -19,7 +19,7 @@ class DefaultController extends Controller
 	public function indexAction(): Response
 	{
 		$articles = $this->getDoctrine()->getManager()->getRepository(Article::class)->findBy([
-			"state" => Article::PUBLISHED
+			"state" => Article::PUBLISHED,
 		]);
 		
 		return $this->render("@RibsBlog/admin/index.html.twig", ["articles" => $articles]);
@@ -61,7 +61,7 @@ class DefaultController extends Controller
 		}
 		
 		return $this->render("@RibsBlog/admin/edit.html.twig", [
-			"form" => $form->createView()
+			"form" => $form->createView(),
 		]);
 	}
 }

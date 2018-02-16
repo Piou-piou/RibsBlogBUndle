@@ -20,6 +20,7 @@
 				<div class="content">
 					<p>{{ i.article|striptags|slice(0, 150) }}</p>
 					<p>Published on {{ i.publicationDate|date("d/m/Y H:i:s") }}</p>
+					<p>State : {{ i.state }}</p>
 				</div>
 				
 				{% if ribsadmin_acces_right.testRight("ribsadmin@blog@edit") == true %}

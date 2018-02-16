@@ -15,16 +15,16 @@ class Article
 {
 	const PUBLISHED = 1,
 		DRAFT = 2,
-		ARCHIVED  = 3;
+		ARCHIVED = 3;
 	
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="id", type="integer", nullable=false)
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="IDENTITY")
+	 */
+	private $id;
 	
 	/**
 	 * @var string
@@ -40,47 +40,47 @@ class Article
 	 */
 	private $descriptionTag;
 	
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=100, nullable=false)
-     */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="article", type="text", nullable=false)
-     */
-    private $article;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="url", type="string", length=100, nullable=true)
-     */
-    private $url;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="publication_date", type="datetime", nullable=true)
-     */
-    private $publicationDate;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="state", type="integer", nullable=false)
-     */
-    private $state;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="blogArticle")
-     */
-    private $blogCategory;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="title", type="string", length=100, nullable=false)
+	 */
+	private $title;
+	
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="article", type="text", nullable=false)
+	 */
+	private $article;
+	
+	/**
+	 * @var string|null
+	 *
+	 * @ORM\Column(name="url", type="string", length=100, nullable=true)
+	 */
+	private $url;
+	
+	/**
+	 * @var \DateTime|null
+	 *
+	 * @ORM\Column(name="publication_date", type="datetime", nullable=true)
+	 */
+	private $publicationDate;
+	
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="state", type="integer", nullable=false)
+	 */
+	private $state;
+	
+	/**
+	 * @var \Doctrine\Common\Collections\Collection
+	 *
+	 * @ORM\ManyToMany(targetEntity="Category", mappedBy="blogArticle")
+	 */
+	private $blogCategory;
 	
 	/**
 	 * @var \DateTime
@@ -97,14 +97,14 @@ class Article
 	 * @ORM\Column(name="update_date", type="date", nullable=true)
 	 */
 	private $updateDate;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->blogCategory = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+	
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		$this->blogCategory = new \Doctrine\Common\Collections\ArrayCollection();
+	}
 	
 	/**
 	 * @return int
@@ -219,11 +219,17 @@ class Article
 	}
 	
 	/**
-	 * @return int
+	 * @return string
 	 */
-	public function getState(): int
+	public function getState(): string
 	{
-		return $this->state;
+		if ($this->state === $this::DRAFT) {
+			return "DRAFT";
+		} else if ($this->state === $this::ARCHIVED) {
+			return "ARCHIVED";
+		}
+		
+		return "PUBLISHED";
 	}
 	
 	/**
