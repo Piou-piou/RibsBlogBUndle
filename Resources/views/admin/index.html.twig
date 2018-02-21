@@ -4,9 +4,11 @@
 	<h1>Blog</h1>
 {% endblock %}
 
-{% block body %}
+{% block nav_page %}
 	{% include "@RibsBlog/admin/navigation.html" with {'navigation': navigation} %}
-	
+{% endblock %}
+
+{% block body %}
 	{% if ribsadmin_acces_right.testRight("ribsadmin@blog@create") == true %}
 		<div class="top-buttons">
 			<a href="{{ path('ribsadmin_blog_create') }}">Create an article</a>
